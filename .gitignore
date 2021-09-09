@@ -1,0 +1,43 @@
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+
+# Linux
+Network Trash Folder
+Temporary Items
+.apdisk
+.directory
+
+# Windows
+Thumbs.db
+
+# IDE & Editors
+.idea
+*.sublime-workspace
+*.sublime-project
+.history
+.*~
+.swp
+.vscode
+# MewJS
+build
+data
+dist
+
+node_modules/
+!/node_modules/
+ui/node_modules
+package-lock.json
+
+ui/node_modules/
+ui/dist
