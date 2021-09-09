@@ -18,10 +18,10 @@ wss.on('connection', function (ws, req) {
     //     })
     // }, 5000)
     ws.on("message", function (message) { //接收信息
-        // console.log(req.socket.remoteAddress)
+        console.log(req.socket.remoteAddress)
         console.log(`接收到信息${message}`)
         wss.clients.forEach(function (client) {
-            console.log(client.socket.remoteAddress)
+            console.log(client.socket)
             client.send(`${message}`)
         })
         // ws.send("收到信息", function (err) {
