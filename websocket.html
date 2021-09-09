@@ -9,24 +9,30 @@
 </head>
 
 <body>
-
+    <input type="text" id="input">
+    <button onclick="sendMessage()">发送</button>
+    <div id="text"></div>
 </body>
 
 </html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script>
-    let ws = new WebSocket("ws://localhost:3001")
+    function sendMessage() {
+        let message = $("#input").val();
+        console.log(message)
+        ws.send(message)
+    }
+    let ws = new WebSocket("ws://111.67.194.199:3001")
     console.log(ws)
     ws.onopen = function () {
         console.log("ws客户端打开成功")
         ws.send("hello")
     }
-    // ws.on("open", function () {
-    //     console.log("ws客户端打开成功")
-    //     ws.send("hello")
-    // })
+
     ws.onmessage = function (message) {
         console.log(message)
-        console.log(`收到来自服务端的消息${message}`)
+        document.getElementById("text").innerHTML += `${message.data}<br>`
+        console.log(`收到来自服务端的消息${message.data}`)
     }
     // ws.on("message", function (message) {
     //     console.log(`收到来自服务端的消息${message}`)

@@ -10,13 +10,28 @@ console.log("Socket服务已启动");
 wss.on('connection', function (ws, req) {
     console.log("一个客户端已连接")
     // console.log(ws);
-    // console.log(req);
+    // console.log(req.socket.remoteAddress);
+    // console.log(wss.clients)
+    // setInterval(function () {
+    //     wss.clients.forEach(function (client) {
+    //         client.send("hello")
+    //     })
+    // }, 5000)
     ws.on("message", function (message) { //接收信息
+        // console.log(req.socket.remoteAddress)
         console.log(`接收到信息${message}`)
-        ws.send("收到信息", function (err) {
-            if (err) {
-                console.error(err)
-            }
+        wss.clients.forEach(function (client) {
+            console.log(client.socket.remoteAddress)
+            client.send(`${message}`)
         })
+        // ws.send("收到信息", function (err) {
+        //     if (err) {
+        //         console.error(err)
+        //     }
+        // })
     })
+
+    ws.on('close', function close() {
+        console.log('disconnected');
+    });
 })
