@@ -18,7 +18,7 @@ wss.on('connection', function (ws, req) {
     //     })
     // }, 5000)
     ws.on("message", function (message) { //接收信息
-        console.log(req.headers['x-forwarded-for'].split(',')[0].trim();)
+        console.log(req.headers['x-forwarded-for'].split(',')[0].trim())
         console.log(`接收到信息${message}`)
         wss.clients.forEach(function (client) {
             console.log(client.socket)
